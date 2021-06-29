@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.futuregallery.mapper.StudentMapper">
+  <resultMap id="BaseResultMap" type="com.futuregallery.model.Student">
+    <id column="id" jdbcType="CHAR" property="id" />
+    <result column="owner" jdbcType="CHAR" property="owner" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="source" jdbcType="VARCHAR" property="source" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="birth" jdbcType="CHAR" property="birth" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="createTime" jdbcType="CHAR" property="createTime" />
+    <result column="createBy" jdbcType="VARCHAR" property="createBy" />
+    <result column="age" jdbcType="VARCHAR" property="age" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, owner, name, source, phone, email, description, birth, address, createTime, createBy, age
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_student
+    where id = #{id,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from t_student
+    where id = #{id,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.futuregallery.model.Student">
+    insert into t_student (id, owner, name, source, 
+      phone, email, description, 
+      birth, address, createTime, 
+      createBy, age)
+    values (#{id,jdbcType=CHAR}, #{owner,jdbcType=CHAR}, #{name,jdbcType=VARCHAR}, #{source,jdbcType=VARCHAR}, 
+      #{phone,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, 
+      #{birth,jdbcType=CHAR}, #{address,jdbcType=VARCHAR}, #{createTime,jdbcType=CHAR},
+      #{createBy,jdbcType=VARCHAR}, #{age,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.futuregallery.model.Student">
+    insert into t_student
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="owner != null">
+        owner,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="source != null">
+        source,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+      <if test="birth != null">
+        birth,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="createTime != null">
+        createTime,
+      </if>
+      <if test="createBy != null">
+        createBy,
+      </if>
+      <if test="age != null">
+        age,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=CHAR},
+      </if>
+      <if test="owner != null">
+        #{owner,jdbcType=CHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="source != null">
+        #{source,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="birth != null">
+        #{birth,jdbcType=CHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=CHAR},
+      </if>
+      <if test="createBy != null">
+        #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="age != null">
+        #{age,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.futuregallery.model.Student">
+    update t_student
+    <set>
+      <if test="owner != null">
+        owner = #{owner,jdbcType=CHAR},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="source != null">
+        source = #{source,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="birth != null">
+        birth = #{birth,jdbcType=CHAR},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        createTime = #{createTime,jdbcType=CHAR},
+      </if>
+      <if test="createBy != null">
+        createBy = #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="age != null">
+        createBy = #{createBy,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.futuregallery.model.Student">
+    update t_student
+    set owner = #{owner,jdbcType=CHAR},
+      name = #{name,jdbcType=VARCHAR},
+      source = #{source,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      description = #{description,jdbcType=VARCHAR},
+      birth = #{birth,jdbcType=CHAR},
+      address = #{address,jdbcType=VARCHAR},
+      createTime = #{createTime,jdbcType=CHAR},
+      createBy = #{createBy,jdbcType=VARCHAR},
+      age = #{age,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=CHAR}
+  </update>
+
+  <select id="selectSelective" resultType="com.futuregallery.model.Student">
+    select
+    a.id,
+    b.name as owner,
+    a.name,
+    a.source,
+    a.phone,
+    a.email,
+    a.birth,
+    a.age
+    from t_student a
+    join t_user b
+    on a.owner = b.id
+    <where>
+
+      <if test="owner!=null and owner!=''">
+        b.name like '%' #{owner,jdbcType=CHAR} '%'
+      </if>
+      <if test="name!=null and name!=''">
+        and a.name like '%' #{name,jdbcType=VARCHAR} '%'
+      </if>
+      <if test="source!=null and source!=''">
+        and a.source like '%' #{source,jdbcType=VARCHAR} '%'
+      </if>
+      <if test="birth!=null and birth!=''">
+        and a.birth like '%' #{birth,jdbcType=CHAR} '%'
+      </if>
+      <if test="createBy!=null and createBy!=''">
+        and a.createBy like '%' #{createBy,jdbcType=VARCHAR} '%'
+      </if>
+    </where>
+    order by a.createTime desc
+    limit #{startIndex}, #{pageSize}
+  </select>
+
+  <select id="selectTotalSelective" resultType="int">
+    select
+      count(*)
+    from
+      t_student a
+    join t_user b
+    on a.owner = b.id
+    <where>
+
+      <if test="owner!=null and owner!=''">
+        b.name like '%' #{owner,jdbcType=CHAR} '%'
+      </if>
+      <if test="name!=null and name!=''">
+        and a.name like '%' #{name,jdbcType=VARCHAR} '%'
+      </if>
+      <if test="source!=null and source!=''">
+        and a.source like '%' #{source,jdbcType=VARCHAR} '%'
+      </if>
+      <if test="birth!=null and birth!=''">
+        and a.birth like '%' #{birth,jdbcType=CHAR} '%'
+      </if>
+      <if test="createBy!=null and createBy!=''">
+        and a.createBy like '%' #{createBy,jdbcType=VARCHAR} '%'
+      </if>
+    </where>
+  </select>
+
+  <delete id="deleteByIds">
+    delete from t_student where id in
+    <foreach collection="array" item="id" open="(" close=")" separator=",">
+      #{id}
+    </foreach>
+  </delete>
+</mapper>
