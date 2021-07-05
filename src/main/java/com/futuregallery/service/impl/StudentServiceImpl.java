@@ -92,4 +92,9 @@ public class StudentServiceImpl implements StudentService {
 
         return flag;
     }
+
+    @Override
+    public Student getStudent(String id) {
+        return studentMapper.selectById(id);
+    }
 }

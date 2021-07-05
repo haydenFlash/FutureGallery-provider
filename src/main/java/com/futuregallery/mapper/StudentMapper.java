@@ -27,4 +27,6 @@ public interface StudentMapper {
     int selectTotalSelective(Map<String, Object> map);
 
     int deleteByIds(String[] ids);
+
+    Student selectById(String id);
 }

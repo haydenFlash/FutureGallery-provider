@@ -27,4 +27,12 @@
             createBy
         from t_user;
     </select>
+
+    <select id="selectByUser" resultType="com.futuregallery.model.User">
+        select * from t_user where loginName=#{loginName} and loginPwd = #{loginPwd};
+    </select>
+
+    <update id="updatePwd">
+        update t_user set loginPwd = #{loginPwd} where id = #{id}
+    </update>
 </mapper>
